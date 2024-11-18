@@ -1,7 +1,7 @@
 const pomodoroTime = document.querySelector('#pomodoro-time');
 
 let timeLeft = 1500;
-let mode = pomodoroTime;
+let mode = 'pomodoro';
 let timerId;
 
 function createStringTime() {
@@ -29,15 +29,6 @@ function startTimer() {
 
         if (timeLeft === 0) {
             clearInterval(timerId);
-
-            if (mode === btnBreak) {
-                timeLeft = 300;
-            } else if (mode === pomodoroTime) {
-                timeLeft = 1500;
-            }
-
-            createStringTime();
-            btnStart.textContent = 'start';
         }
     }, 1);
 };
@@ -45,9 +36,9 @@ function startTimer() {
 function resetTimer() {
     clearInterval(timerId);
 
-    if (mode === btnBreak) {
+    if (mode === 'break') {
         timeLeft = 300;
-    } else if (mode === pomodoroTime) {
+    } else if (mode === 'pomodoro') {
         timeLeft = 1500;
     }
 
@@ -68,7 +59,7 @@ const pomodoroBtn = document.querySelector('#pomodoro');
 
 pomodoroBtn.addEventListener('click', () => {
     timeLeft = 1500;
-    mode = pomodoroTime;
+    mode = 'pomodoro';
     createStringTime();
     classСhange(pomodoroBtn);
 });
@@ -77,7 +68,7 @@ const btnBreak = document.querySelector('#break');
 
 btnBreak.addEventListener('click', () => {
     timeLeft = 300;
-    mode = btnBreak;
+    mode = 'break';
     createStringTime();
     classСhange(btnBreak);
 });
