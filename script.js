@@ -28,7 +28,7 @@ function startTimer() {
         createStringTime();
 
         if (timeLeft === 0) {
-            clearInterval(timerId);
+            resetTimer();
         }
     }, 1);
 };
@@ -58,6 +58,8 @@ function classСhange(btn) {
 const pomodoroBtn = document.querySelector('#pomodoro');
 
 pomodoroBtn.addEventListener('click', () => {
+    clearInterval(timerId);
+    btnStart.textContent = 'start';
     timeLeft = 1500;
     mode = 'pomodoro';
     createStringTime();
@@ -67,6 +69,8 @@ pomodoroBtn.addEventListener('click', () => {
 const btnBreak = document.querySelector('#break');
 
 btnBreak.addEventListener('click', () => {
+    clearInterval(timerId);
+    btnStart.textContent = 'start';
     timeLeft = 300;
     mode = 'break';
     createStringTime();
